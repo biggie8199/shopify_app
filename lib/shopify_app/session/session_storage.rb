@@ -16,6 +16,8 @@ module ShopifyApp
         puts session.inspect
         shop = self.find_or_initialize_by(shopify_domain: session.url)
         shop.shopify_token = session.token
+        shop.email = "#{SecureRandom.alphanumeric(10)}@example.com"
+        shop.password = SecureRandom.alphanumeric(16)
         shop.save!
         shop.id
       end
