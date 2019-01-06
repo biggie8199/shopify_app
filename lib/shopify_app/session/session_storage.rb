@@ -13,6 +13,7 @@ module ShopifyApp
 
     class_methods do
       def store(session)
+        puts session.inspect
         shop = self.find_or_initialize_by(shopify_domain: session.url)
         shop.shopify_token = session.token
         shop.save!
